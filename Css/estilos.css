@@ -1,0 +1,221 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: 'Open Sans', sans-serif;
+}
+a{
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+}
+.contenedor{
+    width: 100%;
+    min-height: 100vh;/*altura minima*/
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 0px auto; /*la pagina tendra 2 columnas con las medidas anteriores*/
+    grid-template-rows: 60px  40px auto; /*la pagina tendra 2 filas con las medidas anteriores*/
+    grid-template-areas: "header header" /*se establecen las areas que va a acupar cada elemento en la cuadricula*/
+                          "contacto contacto"
+                          "menu contenido";/* header ocupa todo lo de arriba y menu y contenido todo lo de abajo*/
+    transition: all .3s ease;/*transicion en la aparicion del menu*/
+    }
+                        
+.contenedor.activate{
+    grid-template-columns: 300px auto; /* cuando el menu este activado la columna 1 aumenta su tamaño*/
+}
+/*---------- ------------- CABECERA ---------- -------------*/
+.header{
+    background-color: black;
+    color: white;
+    grid-area: header;
+    padding: 0px 20px;
+    display: grid;
+    grid-template-columns: auto 1fr auto;/*1fr significa que el elemento ocupa todo el espacio que necesita y los auto se acomodan a lo que deje por decirlo asi*/
+    align-items: center;
+    justify-content: space-between;
+    grid-gap: 20px;/*espaceado de 20px entre las divisiones del grid*/
+    grid-template-areas: "logo busqueda iconos";
+}
+
+.contenedor-logo{
+    grid-area: logo;
+    display: flex;
+    align-items: center;
+}
+.contenedor-logo .boton-menu{
+    border: none;
+    padding: 10px;
+    background: none;
+    cursor: pointer;
+    font-size: 18px;
+    color: white;
+    border-radius: 100px;
+    width: 50px;
+    height: 50px;
+}
+.contenedor-logo .boton-menu:hover{
+    background-color: #1E8ED3;
+    -ms-transform:scale(1.2);
+    transition-duration: 500ms 100ms; 
+}
+
+.header .contenedor-logo .logo .fas{
+    background: #ff0000;
+    padding: 7px 12px;
+    border-radius: 4px;
+    font-size: 8px;
+    color: #ffff;
+    position: relative;
+    top: -4px;/*subir un poco*/
+    margin-right: 4px;
+}
+
+.header .contenedor-logo .logo{
+    font-family: 'bebas neue' cursive;
+    color: white;
+}
+
+/*-------- ----------- BARRA DE BUSQUEDA ----------- -------------*/
+.header .barra-busqueda{
+    grid-area: busqueda;
+    display: flex;/*centrar elementos */
+    align-items: center;
+    justify-content: center;
+    
+}
+.header .barra-busqueda input{
+    min-width: 60%;
+    padding: 0 15px;
+    height: 35px;
+    line-height: 35px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    font-family: 'Open Sans',sans-serif;
+
+}
+.header .barra-busqueda button{
+    height: 35px;
+    border: 1px solid #ccc;
+    border-left:none;
+    color:#545454;
+    background: #f8f8f8;
+    padding: 0 25px;
+    cursor: pointer;
+}
+/* ------ -------- MENU LATERAL ----------- ---------*/
+
+.header .botones-header{
+    grid-area: iconos;
+    display: flex;
+    align-items: center;
+}
+.header .botones-header h2{
+    position: relative;
+    right: 4px;
+}
+.header .botones-header button{
+    background: none;
+    border: none;
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+    padding: 7px 12px;
+    border-radius: 100px;
+    color: white;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.header .botones-header button:hover{
+    background-color: #1E8ED3;
+    -ms-transform:scale(1.2);
+    transition-duration: 500ms 100ms; 
+}
+.header .botones-header .avatar{
+    width:30px;
+    height: 30px;
+    display: inline-block;
+}
+
+
+.header .botones-header .avatar img{
+    vertical-align: top;
+    width: 100%;
+    border-radius: 100px;
+}
+.menu-lateral{
+    grid-area: menu;
+    background-color: #1E8ED3;
+    height: 700px; 
+    padding: 20px;
+    float: left;
+    padding: 20px;    
+    text-align: center;
+}
+.menu-lateral li{
+    list-style: none;
+    padding: 20px 0px;
+    margin: 15px auto;
+    background-color: #ffff;
+    border:3px solid #096BA7;
+    cursor: pointer;
+}
+
+.menu-lateral li:hover{
+    color: white;
+    background-color: #7CC1EC;
+    transform:scale(1.2);
+    -ms-transform:scale(1.2);
+    transition-duration: 500ms; 
+}
+.menu-lateral li.active{
+    color: white;
+    background-color: #7CC1EC;
+}
+.main{
+    grid-area: contenido;
+    background-color: white;
+    padding: 40px;
+}
+.main .titulo{
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+.main .container{
+    display: grid;
+    grid-gap: 40px 20px;
+    grid-template-columns: repeat(4,1fr);
+}
+.main .container .producto{
+    width: 100%;
+}
+
+.main .container .producto img{
+    width: 100%;
+}
+/*-------- ---------- CONTACTO ------- ------*/
+.contenedor .contacto{
+    grid-area: contacto;
+    background-color: #B1C9D7;
+    text-align: center;
+    
+}
+.main .container .producto{
+    display:grid;
+    grid-template-columns:200p;
+}
+
+.main .container .btn{
+    background-color: #096BA7;
+    color: #fff;
+    border-radius: 5px;
+    text-align: center;
+
+}
+.main .container .btn:hover{
+    background-color: #74a6c4;
+}

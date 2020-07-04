@@ -3,5 +3,4 @@
     if(!$conexion){
         echo "no se conecto a la bd";
     }
-
 ?>

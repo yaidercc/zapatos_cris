@@ -3,11 +3,22 @@
     session_start();
     $iduser = $_POST['iduser'];
     $contra = $_POST['clave'];
-    $consulta="SELECT ID_USUARIO,CLAVE FROM usuarios where ID_USUARIO='$iduser' AND CLAVE='$contra'";
+    $consulta="SELECT * FROM usuarios where ID_USUARIO='$iduser' AND CLAVE='$contra'";
     $resultado=mysqli_query($conexion,$consulta);
     if(!isset($resultado)){
-        echo "no se encontro el usuario";
+        echo " <script language='JavaScript'>
+        alert('datos incorrectos');
+        </script>";
     }else{
-        echo "se encontro el usuario";
-    }
+        $datos=$resultado->fetch_assoc();
+        $_SESSION['data']=$datos;
+        if($_SESSION['data']['ID_TIPO_USUARIO_FK']==1){
+            header("location:../administrador.php");
+        }else{
+        header("location:../cliente.php");
+
+        }
+        
+}
+   
 ?>

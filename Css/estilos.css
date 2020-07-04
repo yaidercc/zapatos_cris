@@ -17,7 +17,7 @@ a{
     margin: 0 auto;
     display: grid;
     grid-template-columns: 0px auto; /*la pagina tendra 2 columnas con las medidas anteriores*/
-    grid-template-rows: 60px  40px auto; /*la pagina tendra 2 filas con las medidas anteriores*/
+    grid-template-rows: 60px  40px  auto; /*la pagina tendra 2 filas con las medidas anteriores*/
     grid-template-areas: "header header" /*se establecen las areas que va a acupar cada elemento en la cuadricula*/
                           "contacto contacto"
                           "menu contenido";/* header ocupa todo lo de arriba y menu y contenido todo lo de abajo*/
@@ -181,9 +181,11 @@ a{
     background-color: white;
     padding: 40px;
 }
-.main .titulo{
+.main .titulos{
     margin-bottom: 20px;
     margin-top: 20px;
+    font-size: 30px;
+    text-align: center;
 }
 .main .container{
     display: grid;
@@ -202,8 +204,12 @@ a{
     grid-area: contacto;
     background-color: #B1C9D7;
     text-align: center;
-    
 }
+.contenedor .contacto p{
+    position: relative;
+    top: 4px;
+}
+ 
 .main .container .producto{
     display:grid;
     grid-template-columns:200p;

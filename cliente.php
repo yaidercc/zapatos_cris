@@ -49,16 +49,6 @@
                 <figcaption>DAMAS</figcaption>
             </li>
             
-           <li>
-                <a href="#" id="abrir"><img src="Css/img/zapato.png" height="50px"></i></a>
-                <figcaption>AGREGAR PRODUCTO</figcaption>
-            </li>
-
-            <li>
-                <a href="#" id="open"><img src="Css/img/editar.png" height="50px"></i></a>
-                <figcaption>EDITAR PRODUCTO</figcaption>
-            </li>
-            
             <li>
                 <a href="php/logout.php"><img src="Css/img/cerrar sesion.png" height="50px"></i></a>
                 <figcaption>CERRAR SESION</figcaption>
@@ -70,7 +60,6 @@
         <main class="main">
             <h3 class="titulos">PRODUCTOS</h3>
             <div class="container">
-                
                 <?php
 			        include 'php/conexion.php';//incluye la conexion a la base de datos
 			        $query="SELECT * from productos where cantidad>0";//trae los datos que coincidan con la busqueda
@@ -83,6 +72,7 @@
                             <p class="genero" id="genero"><?php echo $mostrar['ID_GENERO_FK']?></p>
                             <p class="genero">unidades disponibles:<?php echo $mostrar['CANTIDAD']?> </p>
                             <p class="genero">precio: $<?php echo $mostrar['PRECIO']?></p>
+                            <a href="#" id="open" class="btn">EDITAR</a>
                              <a href="#" class="btn1">ELIMINAR</a>
                         </div>
 				<?php

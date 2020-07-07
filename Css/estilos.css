@@ -34,11 +34,11 @@ a{
     grid-area: header;
     padding: 0px 20px;
     display: grid;
-    grid-template-columns: auto 1fr auto;/*1fr significa que el elemento ocupa todo el espacio que necesita y los auto se acomodan a lo que deje por decirlo asi*/
+    grid-template-columns: auto 1fr auto auto;/*1fr significa que el elemento ocupa todo el espacio que necesita y los auto se acomodan a lo que deje por decirlo asi*/
     align-items: center;
     justify-content: space-between;
     grid-gap: 20px;/*espaceado de 20px entre las divisiones del grid*/
-    grid-template-areas: "logo busqueda iconos";
+    grid-template-areas: "logo busqueda iniciar registro";
 }
 
 .contenedor-logo{
@@ -109,7 +109,12 @@ a{
 /* ------ -------- MENU LATERAL ----------- ---------*/
 
 .header .botones-header{
-    grid-area: iconos;
+    grid-area: iniciar;
+    display: flex;
+    align-items: center;
+}
+.header .registrar{
+    grid-area: registro;
     display: flex;
     align-items: center;
 }
@@ -146,6 +151,15 @@ a{
     vertical-align: top;
     width: 100%;
     border-radius: 100px;
+}
+/*--------- ----------index------- ------------*/
+.header .btns{
+    color: #fff;
+    background-color: #1E8ED3;
+    padding: 10px 25px;
+}
+.header  a:hover{
+    background-color: #7CC1EC;
 }
 .menu-lateral{
     grid-area: menu;
@@ -218,10 +232,167 @@ a{
 .main .container .btn{
     background-color: #096BA7;
     color: #fff;
-    border-radius: 5px;
-    text-align: center;
 
+    text-align: center;
+}
+.main .container .btn1{
+    background-color: #a71b09;
+    color: #fff;
+
+    text-align: center;
+}
+.main .container .btn1:hover{
+    background-color: #e74832;
 }
 .main .container .btn:hover{
     background-color: #74a6c4;
+}
+/*-------------- POPUP---------------*/
+.overlay{
+    background: rgba(0,0,0,.8);
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    visibility: hidden;
+}
+.overlay.active{
+    visibility: visible;
+}
+.popup{
+    background-color: #f8f8f8f8;
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.3);
+    border-radius: 3px;
+    padding: 20px;
+    text-align: center;
+    width: 500px;
+}
+.popup .btn-cerrar-popup{
+    font-size: 16px;
+    line-height: 16px;
+    display: block;
+    text-align: right;
+    color: #bbbbbb;
+    transition: .3s ease all;
+}
+
+.popup .btn-cerrar-popup:hover{
+    color:#000;
+}
+.popup h3{
+    font-size: 36px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.popup form .contenedor-inputs{}
+
+.popup form .contenedor-inputs input{
+    width: 100%;
+    margin-bottom: 20px;
+    height: 45px;
+    line-height: 52px;
+    font-size: 18px;
+    text-align: center;
+    border: 1px solid #bbbbbb;
+}
+.popup form .contenedor-inputs select{
+    width: 100%;
+    margin-bottom: 20px;
+    height: 52px;
+    line-height: 52px;
+    font-size: 18px;
+    text-align: center;
+    border: 1px solid #bbbbbb;
+}
+.popup form .btn-submit{
+    padding: 0 20px;
+    height: 40px;
+    line-height: 40px;
+    border: none;
+    color: #fff;
+    background-color: #096BA7;
+    font-size: 16px;
+    cursor: pointer;
+    transition: .3s ease all;
+
+}
+
+/*----------popup registro------------*/
+.overlays{
+    background: rgba(0,0,0,.8);
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    visibility: hidden;
+}
+.overlays.active{
+    visibility: visible;
+}
+.popups{
+    background-color: #f8f8f8f8;
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.3);
+    border-radius: 3px;
+    padding: 20px;
+    text-align: center;
+    width: 500px;
+}
+.popups .btn-cerrar-popup{
+    font-size: 16px;
+    line-height: 16px;
+    display: block;
+    text-align: right;
+    color: #bbbbbb;
+    transition: .3s ease all;
+}
+
+.popups .btn-cerrar-popups:hover{
+    color:#000;
+}
+.popups h3{
+    font-size: 36px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.popups form .contenedor-inputs{}
+
+.popups form .contenedor-inputs input{
+    width: 100%;
+    margin-bottom: 10px;
+    height: 30px;
+    line-height: 52px;
+    font-size: 18px;
+    text-align: center;
+    border: 1px solid #bbbbbb;
+}
+.popups form .contenedor-inputs select{
+    width: 100%;
+    margin-bottom: 20px;
+    height: 30px;
+    line-height: 52px;
+    font-size: 18px;
+    text-align: center;
+    border: 1px solid #bbbbbb;
+}
+.popups form .btn-submit{
+    padding: 0 20px;
+    height: 40px;
+    line-height: 40px;
+    border: none;
+    color: #fff;
+    background-color: #096BA7;
+    font-size: 16px;
+    cursor: pointer;
+    transition: .3s ease all;
+
 }

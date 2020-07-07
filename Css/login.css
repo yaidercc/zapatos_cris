@@ -1,0 +1,65 @@
+
+body{
+    color: #fff;
+}
+
+.contenedor{
+    width: 500px;
+    height:300px;
+    margin: 15px auto;
+    background-color: #1c1c1c;
+    border-radius: 10px;
+    padding: 15px;
+}
+.formulario{
+    background-color: white;
+    margin-top: 100px;/*con esto bajos un poco lo que es el formulario*/
+    padding: 3px;/*margen interna de 3px*/
+}
+h1{
+    text-align: center;
+    color: black;
+    font-size: 25px;
+}
+
+input[type="text"] ,input[type="password"],input[type="email"]{
+    font-size: 20px;
+    width: 100%;
+    padding: 10px;
+    border: none;/*sirve para quitarle los bores a los input*/
+}
+.input-contenedor{
+    margin-bottom: 15px;/*separacion entre los input*/
+    border: 1px solid #aaaa;
+}
+.icon{
+    min-width: 50px;
+    text-align: center;
+    color: #999;
+}
+.button{
+    border: none;
+    width: 100%;
+    color: white;
+    font-size: 20px;
+    background: #096BA7;
+    padding: 15px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+
+}
+.button:hover{
+    background-color: #4aa3d6;
+}
+p{
+    text-align: center;
+}
+.link{
+    text-decoration: none;
+    color: black;
+    font-weight: 600;
+
+}
+.link:hover{
+    color: cadetblue;
+}

@@ -14,9 +14,14 @@
         $_SESSION['data']=$datos;
         if($_SESSION['data']['ID_TIPO_USUARIO_FK']==1){
             header("location:../administrador.php");
-        }else{
-        header("location:../cliente.php");
+        }else if($_SESSION['data']['ID_TIPO_USUARIO_FK']>1){
+            header("location:../cliente.php");
 
+        }else{
+            echo " <script language='JavaScript'>
+            alert('datos incorrectos');
+            location.replace('http://localhost/Proyecto%20ppi/Aplicativo/index.php#');
+        </script>";
         }
         
 }

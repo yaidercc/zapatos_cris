@@ -8,7 +8,7 @@
     $PRECIO=$_POST['preciou'];
     $random=rand(123344, 199995);
     if(isset($NOMBRE) and $CANTIDAD>0 and $PRECIO>0){
-        $CONSULTA="INSERT INTO `productos`(`ID_PRODUCTO`, `NOMBRE_PRODUCTO`, `IMAGEN`, `PRECIO`, `CANTIDAD`, `ID_GENERO_FK`) VALUES ('$random','$NOMBRE','$IMAGEN','$PRECIO','$CANTIDAD',1)";
+        $CONSULTA="INSERT INTO `productos`(`ID_PRODUCTO`, `NOMBRE_PRODUCTO`, `IMAGEN`, `PRECIO`, `CANTIDAD`, `ID_GENERO_FK`) VALUES ('$random','$NOMBRE','$IMAGEN','$PRECIO','$CANTIDAD',$GENERO)";
         $resultado=mysqli_query($conexion,$CONSULTA);
         if(!$resultado){
             echo " <script language='JavaScript'>

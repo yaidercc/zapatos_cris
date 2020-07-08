@@ -79,7 +79,7 @@
                 <h3>REGISTRARSE</h3>
                 <form method="POST" action="php/registrarse.php"> 
                 <div class="contenedor-inputs">
-                   <input type="text" placeholder="nombre usuario" name="iduser" required>
+                   <input type="text" placeholder="nombre usuario" name="iduser" required >
                    <input type="text" placeholder="identificacion" name="identificacion" required>
                    <input type="text" placeholder="primer nombre" name="nombre1" required>
                    <input type="text" placeholder="segundo nombre" name="nombre2" >

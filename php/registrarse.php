@@ -10,9 +10,9 @@
     $correo=$_POST['correo'];
     $contra = $_POST['clave'];
     $direccion=$_POST['direccion'];
-    $genero=$_POST['genero'];
+    $gener=$_POST['genero'];
     $consulta="INSERT INTO `usuarios`(`ID_USUARIO`, `IDENTIFICACION`, `PRIMER_NOMBRE`, `SEGUNDO_NOMBRE`,`PRIMER_APELLIDO`, `SEGUNDO_APELLIDO`, `CORREO`, `CLAVE`, `DIRECCION`, `TELEFONO`, `ID_TIPO_USUARIO_FK`, `ID_GENERO_FK`)
-     VALUES ($iduser,'$identificacion','$name1','$name2','$apellido1','$apellido2','$correo','$contra','$direccion','$tel',2,2)";
+     VALUES ($iduser,'$identificacion','$name1','$name2','$apellido1','$apellido2','$correo','$contra','$direccion','$tel',2,$gener)";
     $resultado=mysqli_query($conexion,$consulta);
     if(!$resultado){
         echo " <script language='JavaScript'>

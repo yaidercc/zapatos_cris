@@ -108,12 +108,10 @@
 				 	    $consulta="SELECT * from generos";
 				 	    $res=mysqli_query($conexion,$consulta);
 				 	    while ($row=mysqli_fetch_array($res)) {
-				 		    echo "<option>";
-				 		    echo $row['NOMBRE_GENERO'];
-				 		    echo "</option>";
+                            echo '<option value="'.$row['ID_GENERO'].'">'.$row['NOMBRE_GENERO'].'</option>';
 				 	    }
 				        ?>				 
-                    </select>
+                    </select> 		 
                    <input type="number" placeholder="cantidad disponibles" name="cantidad" required>
                    <input type="number" placeholder="precio unitario" name="preciou" required>
                 </div>
@@ -127,20 +125,8 @@
                 <a href="#" id="btn-cerrar-popup2" class="btn-cerrar-popup"> <i class="fas fa-times"></i></a>
                 <h3>EDITAR PRODUCTO</h3>
                 <form method="POST" action="php/editar_producto.php"> 
-                <div class="contenedor-inputs">
-                <select name="product" class="list" required>
-                       <option>--seleccione producto--</option>
-                        <?php
-				 	    include 'php/conexion.php';
-				 	    $consulta="SELECT * from productos WHERE cantidad>0";
-				 	    $res=mysqli_query($conexion,$consulta);
-				 	    while ($row=mysqli_fetch_array($res)) {
-				 		    echo "<option>";
-				 		    echo $row['NOMBRE_PRODUCTO'];
-				 		    echo "</option>";
-				 	    }
-				        ?>				 
-                    </select>
+                <div class="contenedor-inputs">	
+                    <input type="radio" value="yaider">    		 
                    <input type="file" name="img">
                     <input type="text" placeholder="nombre del producto"  name="namepro" required>
                     <input type="number" placeholder="cantidad disponibles"  name="cantidad" required>

@@ -1,13 +1,11 @@
 <?php
     session_start();
-
 ?>
 <html>
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>pagina Principal</title>
-    
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
@@ -37,6 +35,7 @@
         <div class="contacto">
             <strong><p></p></strong>
         </div>
+        <!--menu de navegacion-->
         <nav class="menu-lateral">
         <ul>
 
@@ -126,21 +125,31 @@
                 <h3>EDITAR PRODUCTO</h3>
                 <form method="POST" action="php/editar_producto.php"> 
                 <div class="contenedor-inputs">	
-                    <input type="radio" value="yaider">    		 
-                   <input type="file" name="img">
-                    <input type="text" placeholder="nombre del producto"  name="namepro" required>
-                    <input type="number" placeholder="cantidad disponibles"  name="cantidad" required>
-                    <input type="number" placeholder="precio unitario" name="preciou" required>
+                <form>
+                    <select id='producto' >
+                    <option>--seleccione producto--</option>
+                        <?php
+				 	    include 'php/conexion.php';
+				 	    $consulta="SELECT * from productos";
+				 	    $res=mysqli_query($conexion,$consulta);
+				 	    while ($row=mysqli_fetch_array($res)) {
+                            echo '<option value="'.$row['ID_PRODUCTO'].'">'.$row['NOMBRE_PRODUCTO'].'</option>';
+				 	    }
+				        ?>		
+                    </select>
+                    <input type="text" placeholder="nombre del producto"  id="nombre" name="namepro" required>
+                    <input type="number" placeholder="cantidad disponibles"  id="cantidad" name="cantidad" required>
+                    <input type="number" placeholder="precio unitario" id="precio" name="preciou" required>
                 </div>
                <input type="submit" value="editar" class="btn-submit">
            </form>
         </div>
-
     </div>
-    
-  
     <script src='javaScript/main.js'></script> 
     <script src="https://kit.fontawesome.com/2efdabf6ca.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js">
+    </script>
+    <script type="text/javascript" src="javaScript/ajax.js"></script>
     
 </body>
 </html>

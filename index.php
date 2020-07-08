@@ -95,9 +95,7 @@
 				 	    $consulta="SELECT * from generos";
 				 	    $res=mysqli_query($conexion,$consulta);
 				 	    while ($row=mysqli_fetch_array($res)) {
-				 		    echo "<option>";
-				 		    echo $row['NOMBRE_GENERO'];
-				 		    echo "</option>";
+                            echo '<option value="'.$row['ID_GENERO'].'">'.$row['NOMBRE_GENERO'].'</option>';
 				 	    }
 				        ?>				 
                     </select>

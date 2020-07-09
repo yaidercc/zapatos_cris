@@ -71,8 +71,7 @@
                             <p class="genero" id="genero"><?php echo $mostrar['ID_GENERO_FK']?></p>
                             <p class="genero">unidades disponibles:<?php echo $mostrar['CANTIDAD']?> </p>
                             <p class="genero">precio: $<?php echo $mostrar['PRECIO']?></p>
-                            <a href="#" id="open" class="btn">EDITAR</a>
-                             <a href="#" class="btn1">ELIMINAR</a>
+                            <a href="#" id="open" class="btn">SOLICITAR</a>
                         </div>
 				<?php
 				}
@@ -107,35 +106,6 @@
                    <input type="number" placeholder="precio unitario" name="preciou" required>
                 </div>
                <input type="submit" value="agregar" class="btn-submit">
-           </form>
-        </div>
-
-        <!---editar producto--> 
-        <div id="overlay2" class="overlay">
-            <div class="popup" id="popup2">
-                <a href="#" id="btn-cerrar-popup2" class="btn-cerrar-popup"> <i class="fas fa-times"></i></a>
-                <h3>EDITAR PRODUCTO</h3>
-                <form method="POST" action="php/editar_producto.php"> 
-                <div class="contenedor-inputs">
-                <select name="product" class="list" required>
-                       <option>--seleccione producto--</option>
-                        <?php
-				 	    include 'php/conexion.php';
-				 	    $consulta="SELECT * from productos WHERE cantidad>0";
-				 	    $res=mysqli_query($conexion,$consulta);
-				 	    while ($row=mysqli_fetch_array($res)) {
-				 		    echo "<option>";
-				 		    echo $row['NOMBRE_PRODUCTO'];
-				 		    echo "</option>";
-				 	    }
-				        ?>				 
-                    </select>
-                   <input type="file" name="img">
-                    <input type="text" placeholder="nombre del producto"  name="namepro" required>
-                    <input type="number" placeholder="cantidad disponibles"  name="cantidad" required>
-                    <input type="number" placeholder="precio unitario" name="preciou" required>
-                </div>
-               <input type="submit" value="editar" class="btn-submit">
            </form>
         </div>
 

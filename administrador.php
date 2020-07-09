@@ -69,25 +69,23 @@
         <main class="main">
             <h3 class="titulos">PRODUCTOS</h3>
             <div class="container">
-                
                 <?php
 			        include 'php/conexion.php';//incluye la conexion a la base de datos
 			        $query="SELECT * from productos where cantidad>0";//trae los datos que coincidan con la busqueda
                     $result=mysqli_query($conexion,$query);//ejecuta la consulta
-			        while ($mostrar=mysqli_fetch_array($result)) {//empieza a recorer e imprimir los datos encontrados
-				    ?>
-				        <div class="producto">
-                            <img class="img" src="Css/img/zapatos.jpg" >
+                    while ($mostrar=mysqli_fetch_array($result)) {?>
+                        <div class="producto">
+                                echo '<img src="'.$res["IMAGEN"].'" width="100" heigth="100"><br>';
                             <strong><p class="desc"><?php echo $mostrar['NOMBRE_PRODUCTO']?></p></strong>
-                            <p class="genero" id="genero"><?php echo $mostrar['ID_GENERO_FK']?></p>
+                            <p class="genero" id="genero: "><?php echo $mostrar['ID_GENERO_FK']?></p>
                             <p class="genero">unidades disponibles:<?php echo $mostrar['CANTIDAD']?> </p>
                             <p class="genero">precio: $<?php echo $mostrar['PRECIO']?></p>
                              <a href="#" class="btn1">ELIMINAR</a>
                         </div>
-				<?php
+                        <?php
 				}
 				?>
-                    
+                 
             </div>
         </main>
         </div>
@@ -96,20 +94,20 @@
             <div class="popup" id="popup">
                 <a href="#" id="btn-cerrar-popup" class="btn-cerrar-popup"> <i class="fas fa-times"></i></a>
                 <h3>AGREGAR PRODUCTO</h3>
-                <form method="POST" action="php/agregar_producto.php"> 
+                <form method="POST" action="php/agregar_producto.php" enctype="multipart/form-data">  
                 <div class="contenedor-inputs">
-                    <input type="file" name="img">
+                    <input type="file" name="foto">
                    <input type="text" placeholder="nombre del producto"  name="namepro" required>
                    <select name="genero" class="list" required>
                        <option>--seleccione genero--</option>
                         <?php
-				 	    include 'php/conexion.php';
-				 	    $consulta="SELECT * from generos";
-				 	    $res=mysqli_query($conexion,$consulta);
-				 	    while ($row=mysqli_fetch_array($res)) {
-                            echo '<option value="'.$row['ID_GENERO'].'">'.$row['NOMBRE_GENERO'].'</option>';
+				 	        include 'php/conexion.php';
+				 	        $consulta="SELECT * from generos";
+				 	        $res=mysqli_query($conexion,$consulta);
+				 	        while ($row=mysqli_fetch_array($res)) {
+                                echo '<option value="'.$row['ID_GENERO'].'">'.$row['NOMBRE_GENERO'].'</option>';
 				 	    }
-				        ?>				 
+				        ?>	    			 
                     </select> 		 
                    <input type="number" placeholder="cantidad disponibles" name="cantidad" required>
                    <input type="number" placeholder="precio unitario" name="preciou" required>
@@ -126,7 +124,7 @@
                 <form method="POST" action="php/editar_producto.php"> 
                 <div class="contenedor-inputs">	
                 <form>
-                    <select id='producto' >
+                    <select id='producto' name="productos" required>
                     <option>--seleccione producto--</option>
                         <?php
 				 	    include 'php/conexion.php';
@@ -137,9 +135,9 @@
 				 	    }
 				        ?>		
                     </select>
-                    <input type="text" placeholder="nombre del producto"  id="nombre" name="namepro" required>
-                    <input type="number" placeholder="cantidad disponibles"  id="cantidad" name="cantidad" required>
-                    <input type="number" placeholder="precio unitario" id="precio" name="preciou" required>
+                    <input type="text" placeholder="nombre del producto"  id="nombre" name="namepro" >
+                    <input type="number" placeholder="cantidad disponibles"  id="cantidad" name="cantidad" >
+                    <input type="number" placeholder="precio unitario" id="precio" name="preciou" >
                 </div>
                <input type="submit" value="editar" class="btn-submit">
            </form>
@@ -149,7 +147,7 @@
     <script src="https://kit.fontawesome.com/2efdabf6ca.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js">
     </script>
-    <script type="text/javascript" src="javaScript/ajax.js"></script>
+    <!--<script type="text/javascript" src="javaScript/ajax.js"></script>-->
     
 </body>
 </html>

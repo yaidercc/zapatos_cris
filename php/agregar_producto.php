@@ -1,14 +1,17 @@
 <?php
     include 'conexion.php';
     session_start();
-    $IMAGEN=$_POST['img'];
     $NOMBRE=$_POST['namepro'];
     $GENERO=$_POST['genero'];
     $CANTIDAD=$_POST['cantidad'];
     $PRECIO=$_POST['preciou'];
+    $foto=$_FILES["foto"]["name"];
+    $ruta=$_FILES["foto"]["tmp_name"];
+    $destino="fotos".$foto;
+    copy($ruta,$destino);
     $random=rand(123344, 199995);
     if(isset($NOMBRE) and $CANTIDAD>0 and $PRECIO>0){
-        $CONSULTA="INSERT INTO `productos`(`ID_PRODUCTO`, `NOMBRE_PRODUCTO`, `IMAGEN`, `PRECIO`, `CANTIDAD`, `ID_GENERO_FK`) VALUES ('$random','$NOMBRE','$IMAGEN','$PRECIO','$CANTIDAD',$GENERO)";
+        $CONSULTA="INSERT INTO `productos`(`ID_PRODUCTO`, `NOMBRE_PRODUCTO`, `IMAGEN`, `PRECIO`, `CANTIDAD`, `ID_GENERO_FK`) VALUES ('$random','$NOMBRE','$destino','$PRECIO','$CANTIDAD',$GENERO)";
         $resultado=mysqli_query($conexion,$CONSULTA);
         if(!$resultado){
             echo " <script language='JavaScript'>
@@ -27,5 +30,5 @@
         location.replace('http://localhost/Proyecto%20ppi/Aplicativo/administrador.php#');
         </script>";
     }
-  
+
 ?>

@@ -61,33 +61,34 @@
         <main class="main">
             <h3 class="titulos">PRODUCTOS</h3>
             <div class="container">
-            <form method="POST" action="php/modificar.php">  
+             
                 <?php
                     include 'php/conexion.php';//incluye la conexion a la base de datos
 			        $query="SELECT * from productos";//trae los datos que coincidan con la busqueda
                     $result=mysqli_query($conexion,$query);//ejecuta la consulta
                     while ($mostrar=mysqli_fetch_array($result)) {
                         ?>
-                        <div class="producto">
-                            <?php
-                                echo '<img src="'.$mostrar["IMAGEN"].'"><br>';
-                            ?>
+                        <form action="php/modificar.php" method="POST">  
+                            <div class="producto">
+                                <?php
+                                    echo '<img src="'.$mostrar["IMAGEN"].'"><br>';
+                                ?>
+                                <input type="hidden" name="idsp" value="<?php echo $mostrar['ID_PRODUCTO'] ?>">
                                 <strong><p class="desc"><input name="nombre" type="text" value="<?php echo $mostrar['NOMBRE_PRODUCTO']?>"></p></strong>
                                 <p class="genero" id="genero: "><?php echo $mostrar['ID_GENERO_FK']?></p>
                                 <p class="genero"><strong>unidades disponibles: </strong><input name="cantidad" type="text" value="<?php echo $mostrar['CANTIDAD']?>"></p>
                                 <p class="genero"><strong>precio: </strong><input name="precio" type="text" value="<?php echo $mostrar['PRECIO']?>"></p>
-                            </form>
-                                <?PHP echo "<a class='btn' href='php/modificar.php?no=".$mostrar['ID_PRODUCTO']."''>MODIFICAR</a>";?>
+                                <input type="submit" class="btn" value="modificar">
                                 <?PHP echo "<a class='btn1' href='php/eliminar.php?no=".$mostrar['ID_PRODUCTO']."''>ELIMINAR</a>";?>
-                            
-                        </div>
-                        <?php
-				}
-				?>
+                                </div>
+                        </form>
+                    <?php
+				    }
+				    ?>
             </div>
         </main>
         
-        </div>
+    </div>
         <!--agregar producto popup-->
         <div id="overlay" class="overlay ">
             <div class="popup" id="popup">

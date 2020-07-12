@@ -1,18 +1,23 @@
 <?php
     include 'conexion.php';
-    $nombre=$_POST['nombre'];
-    $cantidad=$_POST['cantidad'];
-    $precio=$_POST['precio'];
-    $id=$_GET['no'];
-    if(isset($nombre) and isset($cantidad) and isset($precio)){
-        $eliminar ="UPDATE productos SET NOMBRE_PRODUCTO='$nombre' CANTIDAD='$cantidad' PRECIO='$precio' WHERE ID_PRODUCTO='$id'";
-        $resultado=mysqli_query($conexion,$eliminar);
-        if(!$resultado){
-            " <script language='JavaScript'>
-            alert('no se pudo eliminar');
-            location.replace('http://localhost/Proyecto%20ppi/Aplicativo/administrador.php');
-            </script>";
-        }
-        header("location: http://localhost/Proyecto%20ppi/Aplicativo/administrador.php");
+    if($_SERVER['REQUEST_METHOD']=='POST'){
+        $nombre=$_POST['nombre'];
+        $cantidad=$_POST['cantidad'];
+        $precio=$_POST['precio'];
+        $producto=$_POST['idsp'];
     }
+    $consulta="UPDATE `productos` SET `NOMBRE_PRODUCTO`='$nombre',`PRECIO`=$precio,`CANTIDAD`=$cantidad WHERE `ID_PRODUCTO`=$producto";
+    $run=mysqli_query($conexion,$consulta);
+    if(!$run){
+        echo " <script language='JavaScript'>
+        alert('no se pudo modificar');
+        location.replace('http://localhost/Proyecto%20ppi/Aplicativo/administrador.php');
+        </script>";
+    }else{
+        echo " <script language='JavaScript'>
+        alert('se pudo modificar');
+        location.replace('http://localhost/Proyecto%20ppi/Aplicativo/administrador.php');
+        </script>";
+    }
+    
 ?>

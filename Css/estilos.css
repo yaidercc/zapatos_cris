@@ -134,7 +134,9 @@ a{
     margin-right: 20px;
     cursor: pointer;
 }
-
+.header .botones-header button .fas{
+    color: #fff;
+}
 .header .botones-header button:hover{
     background-color: #1E8ED3;
     -ms-transform:scale(1.2);
@@ -208,10 +210,16 @@ a{
 }
 .main .container .producto{
     width: 100%;
+    padding: 10px;
+    border:3px solid #096BA7;
 }
-
-.main .container .producto img{
+.main .container .producto:hover{
+    background-color:#218ed1 ;
+    color: #fff;
+}
+.main .container .producto  img{
     width: 100%;
+    height: 200px;
 }
 /*-------- ---------- CONTACTO ------- ------*/
 .contenedor .contacto{
@@ -224,11 +232,13 @@ a{
     top: 4px;
 }
  
-.main .container .producto{
+.main .container .producto {
     display:grid;
     grid-template-columns:200p;
 }
 
+
+/*------ ------ ------- -------*/
 .main .container .btn{
     background-color: #096BA7;
     color: #fff;
@@ -395,4 +405,39 @@ a{
     cursor: pointer;
     transition: .3s ease all;
 
+}
+/*comprar*/
+.main .comprar{
+    margin: 7vh 25vh;
+
+}
+
+.main .titulo{
+    margin-bottom: 20px;
+    margin-top: 20px;
+    font-size: 30px;
+    text-align: center;
+}
+/*------ comprar------*/
+.main .comprar .productos{
+    display: felx;
+    align-items: center; 
+    clear: both;
+    margin-bottom: 50px;
+}
+
+.main .comprar .productos .imagen{
+    width: 200px;
+    clear: both;
+}
+.main .comprar .productos .detalles{
+    padding: 10px 0px;
+    display: inline-block;
+    vertical-align: top;
+}
+.main .comprar .productos .bont{
+    background-color: #096BA7;
+    color:#fff;
+    width: 100%;
+    height: 30px;
 }

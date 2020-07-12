@@ -5,7 +5,7 @@
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>pagina Principal</title>
+    <title>Zapatos Cris</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
@@ -28,7 +28,8 @@
                 $curp = $_SESSION['data']['PRIMER_NOMBRE'];
                 ?>
                 <h2><?php echo $curp ?></h2>
-                <button><i class="fas fa-bell"></i></button>
+                <button><a href="#" id="btn"><i title="notificaciones"  class="fas fa-bell"></i></a></button>
+                <button><a href="php/logout.php"><i title="cerrar sesion"class="fas fa-sign-out-alt"></i></a></button>
                 
             </div>
         </header>
@@ -53,15 +54,6 @@
                 <figcaption>AGREGAR PRODUCTO</figcaption>
             </li>
 
-            <li>
-                <a href="#" id="open"><img src="Css/img/editar.png" height="50px"></i></a>
-                <figcaption>EDITAR PRODUCTO</figcaption>
-            </li>
-            
-            <li>
-                <a href="php/logout.php"><img src="Css/img/cerrar sesion.png" height="50px"></i></a>
-                <figcaption>CERRAR SESION</figcaption>
-            </li>
             </ul>
 
 
@@ -69,32 +61,39 @@
         <main class="main">
             <h3 class="titulos">PRODUCTOS</h3>
             <div class="container">
+            <form method="POST" action="php/modificar.php">  
                 <?php
-			        include 'php/conexion.php';//incluye la conexion a la base de datos
-			        $query="SELECT * from productos where cantidad>0";//trae los datos que coincidan con la busqueda
+                    include 'php/conexion.php';//incluye la conexion a la base de datos
+			        $query="SELECT * from productos";//trae los datos que coincidan con la busqueda
                     $result=mysqli_query($conexion,$query);//ejecuta la consulta
-                    while ($mostrar=mysqli_fetch_array($result)) {?>
+                    while ($mostrar=mysqli_fetch_array($result)) {
+                        ?>
                         <div class="producto">
-                                echo '<img src="'.$res["IMAGEN"].'" width="100" heigth="100"><br>';
-                            <strong><p class="desc"><?php echo $mostrar['NOMBRE_PRODUCTO']?></p></strong>
-                            <p class="genero" id="genero: "><?php echo $mostrar['ID_GENERO_FK']?></p>
-                            <p class="genero">unidades disponibles:<?php echo $mostrar['CANTIDAD']?> </p>
-                            <p class="genero">precio: $<?php echo $mostrar['PRECIO']?></p>
-                             <a href="#" class="btn1">ELIMINAR</a>
+                            <?php
+                                echo '<img src="'.$mostrar["IMAGEN"].'"><br>';
+                            ?>
+                                <strong><p class="desc"><input name="nombre" type="text" value="<?php echo $mostrar['NOMBRE_PRODUCTO']?>"></p></strong>
+                                <p class="genero" id="genero: "><?php echo $mostrar['ID_GENERO_FK']?></p>
+                                <p class="genero"><strong>unidades disponibles: </strong><input name="cantidad" type="text" value="<?php echo $mostrar['CANTIDAD']?>"></p>
+                                <p class="genero"><strong>precio: </strong><input name="precio" type="text" value="<?php echo $mostrar['PRECIO']?>"></p>
+                            </form>
+                                <?PHP echo "<a class='btn' href='php/modificar.php?no=".$mostrar['ID_PRODUCTO']."''>MODIFICAR</a>";?>
+                                <?PHP echo "<a class='btn1' href='php/eliminar.php?no=".$mostrar['ID_PRODUCTO']."''>ELIMINAR</a>";?>
+                            
                         </div>
                         <?php
 				}
 				?>
-                 
             </div>
         </main>
+        
         </div>
         <!--agregar producto popup-->
         <div id="overlay" class="overlay ">
             <div class="popup" id="popup">
                 <a href="#" id="btn-cerrar-popup" class="btn-cerrar-popup"> <i class="fas fa-times"></i></a>
                 <h3>AGREGAR PRODUCTO</h3>
-                <form method="POST" action="php/agregar_producto.php" enctype="multipart/form-data">  
+                <form method="POST" action="agregar_producto.php" enctype="multipart/form-data">  
                 <div class="contenedor-inputs">
                     <input type="file" name="foto">
                    <input type="text" placeholder="nombre del producto"  name="namepro" required>
@@ -148,6 +147,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js">
     </script>
     <!--<script type="text/javascript" src="javaScript/ajax.js"></script>-->
-    
+
 </body>
 </html>

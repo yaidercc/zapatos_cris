@@ -34,7 +34,7 @@
         </div>
         <nav class="menu-lateral">
         <ul>
-            <li class="active">
+            <li >
                 <a class="active" href="#"><img src="Css/img/hombre.png" height="50px"></i></a>
                 <figcaption>CABALLEROS</figcaption>
             </li>
@@ -49,14 +49,26 @@
         <main class="main">
             <h3 class="titulos">PRODUCTOS</h3>
             <div class="container">
-                <div class="producto">
-                    <img class="img" src="Css/img/zapatos.jpg" >
-                    <strong><p class="desc">zapatos op</p></strong>
-                    <p class="genero" id="genero">hombre</p>
-                    <p class="genero">unidades disponibles: </p>
-                    <p class="genero">precio:</p>
-                    <a href="#" id="solicitar"class="btn">SOLICITAR</a>
-                </div>
+            <?php
+                include 'php/conexion.php';//incluye la conexion a la base de datos
+                $query="SELECT * from productos where cantidad>0";//trae los datos que coincidan con la busqueda
+                $result=mysqli_query($conexion,$query);//ejecuta la consulta
+                while ($mostrar=mysqli_fetch_array($result)) {
+                    ?>
+                    <div class="producto">
+                        <div class="img">
+                        <?php
+                            echo '<img src="'.$mostrar["IMAGEN"].'" width="100" heigth="100"><br>';
+                        ?>
+                        </div>
+                        <strong><p class="desc"><?php echo $mostrar['NOMBRE_PRODUCTO']?></p></strong>
+                        <p class="genero" id="genero: "><?php echo $mostrar['ID_GENERO_FK']?></p>
+                        <p class="genero"><strong>unidades disponibles: </strong><?php echo $mostrar['CANTIDAD']?></p></br>
+                        <p class="genero"><strong>precio: </strong>$<?php echo $mostrar['PRECIO']?></p>
+                    </div>
+                    <?php
+            }
+            ?>
             </div>
         </main>
         <!--Iniciar sesion-->

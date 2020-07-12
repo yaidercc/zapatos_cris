@@ -11,18 +11,17 @@ var abrirpopup = document.getElementById('abrir'),
     solicitar=document.getElementById('solicitar'),
     btncerrar=document.getElementById('btn-cerrar-popup'),
     abrirycerrar=document.getElementById('cerabri');
-
-btncerrar.addEventListener('click', function(e){
-    e.preventDefault();
-    overlay.classList.remove('active');
-    popup.classList.remove('active');
-});
-
-
-abrirpopup.addEventListener('click', function(){
-    overlay.classList.add('active');
-    popup.classList.add('active');
-});
+    if(abrirpopup && btncerrar){
+            btncerrar.addEventListener('click', function(e){
+            e.preventDefault();
+            overlay.classList.remove('active');
+            popup.classList.remove('active');
+            });
+            abrirpopup.addEventListener('click', function(){
+            overlay.classList.add('active');
+            popup.classList.add('active');
+            });
+    }
 /*-----------registrar cliente----------*/
 var overlayr=document.getElementById('overlays'),
     popupr=document.getElementById('popups'),
@@ -40,10 +39,9 @@ var overlayr=document.getElementById('overlays'),
         });
     }
     
-
 /*-------------editar--------------*/
 
-var openpop = document.getElementById('open'),
+var openpop = document.getElementById('btn'),
     overlays=document.getElementById('overlay2'),
     popups=document.getElementById('popup2'),
     closes=document.getElementById('btn-cerrar-popup2');

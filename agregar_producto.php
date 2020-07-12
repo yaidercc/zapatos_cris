@@ -1,5 +1,5 @@
 <?php
-    include 'conexion.php';
+    require_once 'php/conexion.php';
     session_start();
     $NOMBRE=$_POST['namepro'];
     $GENERO=$_POST['genero'];
@@ -7,8 +7,8 @@
     $PRECIO=$_POST['preciou'];
     $foto=$_FILES["foto"]["name"];
     $ruta=$_FILES["foto"]["tmp_name"];
-    $destino="fotos".$foto;
-    copy($ruta,$destino);
+    $destino="fotos/".$foto;
+    $rutiti=copy($ruta,$destino);
     $random=rand(123344, 199995);
     if(isset($NOMBRE) and $CANTIDAD>0 and $PRECIO>0){
         $CONSULTA="INSERT INTO `productos`(`ID_PRODUCTO`, `NOMBRE_PRODUCTO`, `IMAGEN`, `PRECIO`, `CANTIDAD`, `ID_GENERO_FK`) VALUES ('$random','$NOMBRE','$destino','$PRECIO','$CANTIDAD',$GENERO)";

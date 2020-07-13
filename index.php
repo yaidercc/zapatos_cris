@@ -41,9 +41,12 @@
             <div class="container">
             <?php
                 include 'php/conexion.php';//incluye la conexion a la base de datos
-                $query="SELECT * from productos where cantidad>0";//trae los datos que coincidan con la busqueda
+                $query="SELECT * from productos where CANTIDAD>0";//trae los datos que coincidan con la busqueda
                 $result=mysqli_query($conexion,$query);//ejecuta la consulta
                 while ($mostrar=mysqli_fetch_array($result)) {
+                    $gen="SELECT * FROM generos WHERE ID_GENERO=$mostrar[ID_GENERO_FK]";
+                    $genb=mysqli_query($conexion,$gen);
+                    $auxx=mysqli_fetch_array($genb);
                     ?>
                     <div class="producto">
                         <div class="img">
@@ -52,7 +55,7 @@
                         ?>
                         </div>
                         <strong><p class="desc"><?php echo $mostrar['NOMBRE_PRODUCTO']?></p></strong>
-                        <p class="genero" id="genero: "><?php echo $mostrar['ID_GENERO_FK']?></p>
+                        <p class="genero" id="genero: "><?php echo $auxx['NOMBRE_GENERO']?></p>
                         <p class="genero"><strong>unidades disponibles: </strong><?php echo $mostrar['CANTIDAD']?></p></br>
                         <p class="genero"><strong>precio: </strong>$<?php echo $mostrar['PRECIO']?></p>
                     </div>

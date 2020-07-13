@@ -29,8 +29,9 @@
                 ?>
                 <h2><?php echo $curp ?></h2>
                 <button><a href="#" id="btn"><i title="notificaciones"  class="fas fa-bell"></i></a></button>
-                <button><a href="php/logout.php"><i title="cerrar sesion"class="fas fa-sign-out-alt"></i></a></button>
                 <button><a href="#" id="abrir" class="agg"><i class="far fa-plus-square"></i></a></button>
+                <button><a href="php/logout.php"><i title="cerrar sesion"class="fas fa-sign-out-alt"></i></a></button>
+
                 
             </div>
         </header>
@@ -48,6 +49,9 @@
 			        $query="SELECT * from productos";//trae los datos que coincidan con la busqueda
                     $result=mysqli_query($conexion,$query);//ejecuta la consulta
                     while ($mostrar=mysqli_fetch_array($result)) {
+                        $gen="SELECT * FROM generos WHERE ID_GENERO=$mostrar[ID_GENERO_FK]";
+                        $genb=mysqli_query($conexion,$gen);
+                        $auxx=mysqli_fetch_array($genb);
                         ?>
                         <form action="php/modificar.php" method="POST">  
                             
@@ -57,7 +61,7 @@
                                 ?>
                                 <input type="hidden" name="idsp" value="<?php echo $mostrar['ID_PRODUCTO'] ?>">
                                 <strong><p class="desc"><input name="nombre" type="text" value="<?php echo $mostrar['NOMBRE_PRODUCTO']?>"></p></strong>
-                                <p class="genero" id="genero: "><?php echo $mostrar['ID_GENERO_FK']?></p>
+                                <p class="genero" id="genero: "><?php echo $auxx['NOMBRE_GENERO']?></p>
                                 <p class="genero"><strong>unidades disponibles: </strong><input name="cantidad" type="text" value="<?php echo $mostrar['CANTIDAD']?>"></p>
                                 <p class="genero"><strong>precio: </strong><input name="precio" type="text" value="<?php echo $mostrar['PRECIO']?>"></p>
                                 <input type="submit" class="btn" value="modificar">

@@ -5,7 +5,7 @@
         $cantidad=$_POST['cantidad'];
         $idpro=$_POST['idp'];
         $precio=$_POST['precio'];
-        $talla=$_POST['talla']
+        $talla=$_POST['talla'];
         $total=$cantidad*$precio;
     }
     $verificar="SELECT CANTIDAD FROM productos WHERE ID_PRODUCTO=$idpro";
@@ -17,7 +17,7 @@
         $query="INSERT INTO `encabezado_ventas`(`NRO_FACTURA`, `FECHA_COMPRA`, `ID_USUARIO_FK`) VALUES ($factura,CURRENT_TIMESTAMP,$idusu)";
         $ran=mysqli_query($conexion,$query);
     
-        $consulta="INSERT INTO `detalle_compras`(`ID_COMPRA`, `CANTIDAD`, `TOTAL`, `TALLAS`, `ID_PRODUCTO_FK`, `NRO_FACTURA_FK`) VALUES ($comprar,$cantidad,$total,'31',$idpro,$factura)";
+        $consulta="INSERT INTO `detalle_compras`(`ID_COMPRA`, `CANTIDAD`, `TOTAL`, `TALLAS`, `ID_PRODUCTO_FK`, `NRO_FACTURA_FK`) VALUES ($comprar,$cantidad,$total,$talla,$idpro,$factura)";
         $run=mysqli_query($conexion,$consulta);
     
         $decre="UPDATE productos SET CANTIDAD=CANTIDAD-$cantidad WHERE ID_PRODUCTO=$idpro";

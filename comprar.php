@@ -49,6 +49,9 @@
 			            $query="SELECT * from productos WHERE ID_PRODUCTO=$id";//trae los datos que coincidan con la busqueda
                         $result=mysqli_query($conexion,$query);//ejecuta la consulta
                         while ($mostrar=mysqli_fetch_array($result)) {
+                            $gen="SELECT * FROM generos WHERE ID_GENERO=$mostrar[ID_GENERO_FK]";
+                            $genb=mysqli_query($conexion,$gen);
+                            $auxx=mysqli_fetch_array($genb);
                             ?>
                             <form action="php/comprar_producto.php" method="POST"> 
                                 <div class="productos">
@@ -65,11 +68,11 @@
                                         <input name="idp" type="hidden" value="<?php echo $mostrar['ID_PRODUCTO']?>">
                                         <input name="precio" type="hidden" readonly="readonly" value="<?php echo $mostrar['PRECIO']?>">
 
-                                        <p class="genero" id="genero: ">genero: <?php echo $mostrar['ID_GENERO_FK']?></p>
+                                        <p class="genero" id="genero: "><strong>genero:</strong> <?php echo $auxx['NOMBRE_GENERO']?></p>
 
                                         <p class="genero" name="cantidad" id="cantidad"><strong>unidades a comprar: </strong><input name="cantidad" type="text" value="1"></p>
 
-                                        <p class="genero" name="cantidad" id="cantidad"><strong>talla: </strong><input name="cantidad" placeholder="" type="text"></p>
+                                        <p class="genero" name="cantidad" id="cantidad"><strong>talla: </strong><input name="talla" placeholder="" type="text"></p>
 
                                         <p class="genero" id="total"><strong>precio unitario: </strong><?php echo $mostrar['PRECIO']?></p>
 

@@ -30,6 +30,7 @@
                 <h2><?php echo $curp ?></h2>
                 <button><a href="#" id="btn"><i title="notificaciones"  class="fas fa-bell"></i></a></button>
                 <button><a href="php/logout.php"><i title="cerrar sesion"class="fas fa-sign-out-alt"></i></a></button>
+                <button><a href="#" id="abrir" class="agg"><i class="far fa-plus-square"></i></a></button>
                 
             </div>
         </header>
@@ -37,27 +38,6 @@
             <strong><p></p></strong>
         </div>
         <!--menu de navegacion-->
-        <nav class="menu-lateral">
-        <ul>
-
-            <li>
-                <a  href="#"><img src="Css/img/hombre.png" height="50px"></i></a>
-                <figcaption>CABALLEROS</figcaption>
-            </li>
-            <li>
-                <a href="#"><img src="Css/img/mujer.png" height="50px"></i></a>
-                <figcaption>DAMAS</figcaption>
-            </li>
-            
-           <li>
-                <a href="#" id="abrir"><img src="Css/img/zapato.png" height="50px"></i></a>
-                <figcaption>AGREGAR PRODUCTO</figcaption>
-            </li>
-
-            </ul>
-
-
-        </nav>
         <main class="main">
             <h3 class="titulos">PRODUCTOS</h3>
             <div class="container">
@@ -73,7 +53,7 @@
                             
                             <div class="producto">
                                 <?php
-                                    echo '<img src="'.$mostrar["IMAGEN"].'"><br>';
+                                    echo '<img  src="'.$mostrar["IMAGEN"].'"><br>';
                                 ?>
                                 <input type="hidden" name="idsp" value="<?php echo $mostrar['ID_PRODUCTO'] ?>">
                                 <strong><p class="desc"><input name="nombre" type="text" value="<?php echo $mostrar['NOMBRE_PRODUCTO']?>"></p></strong>

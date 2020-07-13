@@ -32,17 +32,7 @@
         <div class="contacto">
             <strong><p></p></strong>
         </div>
-        <nav class="menu-lateral">
-        <ul>
-            <li >
-                <a class="active" href="#"><img src="Css/img/hombre.png" height="50px"></i></a>
-                <figcaption>CABALLEROS</figcaption>
-            </li>
-            <li>
-                <a href="#"><img src="Css/img/mujer.png" height="50px"></i></a>
-                <figcaption>DAMAS</figcaption>
-            </li>
-        </ul>
+       
 
 
         </nav>

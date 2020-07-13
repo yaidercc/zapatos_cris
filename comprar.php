@@ -52,12 +52,11 @@
                             ?>
                             <form action="php/comprar_producto.php" method="POST"> 
                                 <div class="productos">
-                                    <div class="imagen">
-                                        <h3>COMPRAR PRODUCTO</h3>
+                                    <div class="imgn">
                                         <?php
-                                            echo '<img src="'.$mostrar["IMAGEN"].'"><br>';
+                                            echo '<img img="100px" src="'.$mostrar["IMAGEN"].'"><br>';
                                         ?>
-                                    
+                        
                                     </div>
                                     <div class="detalles">
                                         <strong><p class="desc">nombre del producto: </strong><?php echo $mostrar['NOMBRE_PRODUCTO']?></p>
@@ -70,6 +69,8 @@
 
                                         <p class="genero" name="cantidad" id="cantidad"><strong>unidades a comprar: </strong><input name="cantidad" type="text" value="1"></p>
 
+                                        <p class="genero" name="cantidad" id="cantidad"><strong>talla: </strong><input name="cantidad" placeholder="" type="text"></p>
+
                                         <p class="genero" id="total"><strong>precio unitario: </strong><?php echo $mostrar['PRECIO']?></p>
 
                                         <p><strong>fecha de compra: </strong><?php echo date("y/m/d"); ?></p>
@@ -78,8 +79,7 @@
                                         <input type="submit" class="bont" value="comprar">
                                     </div>
                                 </div>
-                                </form>
-                            
+                            </form>
                         <?php
                         }
                         ?>

@@ -20,7 +20,7 @@ a{
     grid-template-rows: 60px  40px  auto; /*la pagina tendra 2 filas con las medidas anteriores*/
     grid-template-areas: "header header" /*se establecen las areas que va a acupar cada elemento en la cuadricula*/
                           "contacto contacto"
-                          "menu contenido";/* header ocupa todo lo de arriba y menu y contenido todo lo de abajo*/
+                          "contenido contenido";/* header ocupa todo lo de arriba y menu y contenido todo lo de abajo*/
     transition: all .3s ease;/*transicion en la aparicion del menu*/
     }
                         
@@ -34,11 +34,11 @@ a{
     grid-area: header;
     padding: 0px 20px;
     display: grid;
-    grid-template-columns: auto 1fr auto auto;/*1fr significa que el elemento ocupa todo el espacio que necesita y los auto se acomodan a lo que deje por decirlo asi*/
+    grid-template-columns: auto 1fr auto auto auto;/*1fr significa que el elemento ocupa todo el espacio que necesita y los auto se acomodan a lo que deje por decirlo asi*/
     align-items: center;
     justify-content: space-between;
     grid-gap: 20px;/*espaceado de 20px entre las divisiones del grid*/
-    grid-template-areas: "logo busqueda iniciar registro";
+    grid-template-areas: "logo busqueda iniciar registro agregar";
 }
 
 .contenedor-logo{
@@ -113,6 +113,10 @@ a{
     display: flex;
     align-items: center;
 }
+.header .botones-header .agg{
+    grid-area:agregar;
+    color: #fff;
+}
 .header .registrar{
     grid-area: registro;
     display: flex;
@@ -163,35 +167,7 @@ a{
 .header  a:hover{
     background-color: #7CC1EC;
 }
-.menu-lateral{
-    grid-area: menu;
-    background-color: #1E8ED3;
-    height: 700px; 
-    padding: 20px;
-    float: left;
-    padding: 20px;    
-    text-align: center;
-}
-.menu-lateral li{
-    list-style: none;
-    padding: 20px 0px;
-    margin: 15px auto;
-    background-color: #ffff;
-    border:3px solid #096BA7;
-    cursor: pointer;
-}
 
-.menu-lateral li:hover{
-    color: white;
-    background-color: #7CC1EC;
-    transform:scale(1.2);
-    -ms-transform:scale(1.2);
-    transition-duration: 500ms; 
-}
-.menu-lateral li.active{
-    color: white;
-    background-color: #7CC1EC;
-}
 .main{
     grid-area: contenido;
     background-color: white;
@@ -234,7 +210,7 @@ a{
  
 .main .container .producto {
     display:grid;
-    grid-template-columns:200p;
+
 }
 
 
@@ -425,22 +401,7 @@ a{
     text-align: center;
 }
 /*------ comprar------*/
-.main .comprar .productos{
-    display: felx;
-    align-items: center; 
-    clear: both;
-    margin-bottom: 50px;
-}
 
-.main .comprar .productos .imagen{
-    width: 200px;
-    clear: both;
-}
-.main .comprar .productos .detalles{
-    padding: 10px 0px;
-    display: inline-block;
-    vertical-align: top;
-}
 .main .comprar .productos .bont{
     background-color: #096BA7;
     color:#fff;
@@ -467,4 +428,26 @@ scroll-container {
     height: 50%;
     font-size: 16px;
   }
-  
+  /*---- --- --- ---- --- -- -- --*/
+  .main .comprar{
+    border:3px solid #096BA7;
+  }
+.main .comprar .productos{
+    height: 90%;
+    width: 100%;
+    display: grid;
+    padding: 10px;
+    grid-gap: 10px;
+    grid-template-columns: 400px 500px; /*la pagina tendra 2 columnas con las medidas anteriores*/
+    grid-template-areas: "fotos desc"; /*se establecen las areas que va a acupar cada elemento en la cuadricula*/
+}
+.main .comprar .productos .imgn{
+    grid-area:fotos;
+    display: flex;
+    align-items: center;
+    padding:20px;
+}
+.main .comprar .productos .detalles{
+    grid-area:desc;
+    display: grid;
+}

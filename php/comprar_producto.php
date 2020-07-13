@@ -5,12 +5,13 @@
         $cantidad=$_POST['cantidad'];
         $idpro=$_POST['idp'];
         $precio=$_POST['precio'];
+        $talla=$_POST['talla']
         $total=$cantidad*$precio;
     }
     $verificar="SELECT CANTIDAD FROM productos WHERE ID_PRODUCTO=$idpro";
     $correr=mysqli_query($conexion,$verificar);
     $cant=mysqli_fetch_array($correr);
-    if($cant['CANTIDAD']>$cantidad){
+    if($cant['CANTIDAD']>=$cantidad){
         $factura=rand(123344, 199995);
         $comprar=rand(123324, 188995);
         $query="INSERT INTO `encabezado_ventas`(`NRO_FACTURA`, `FECHA_COMPRA`, `ID_USUARIO_FK`) VALUES ($factura,CURRENT_TIMESTAMP,$idusu)";

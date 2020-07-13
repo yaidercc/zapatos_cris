@@ -42,19 +42,6 @@
             <strong><p>contacto: 3058995646</p></strong>
         </div>
         <!--menu lateral-->
-        <nav class="menu-lateral">
-        <ul>
-             <li>
-                <a  href="#"></i></a>
-                <?PHP echo "<a  href='http://localhost/Proyecto%20ppi/Aplicativo/cliente.php#?no=".$mostrar='1'."''><img src='Css/img/mujer.png' height='50px'></a>";?>
-                <figcaption>CABALLEROS</figcaption>
-            </li>
-             <li>
-                <?PHP echo "<a  href='http://localhost/Proyecto%20ppi/Aplicativo/cliente.php#?no=".$mostrar='2'."''><img src='Css/img/hombre.png' height='50px'></a>";?>
-                <figcaption>DAMAS</figcaption>
-            </l>
-        </ul>
-        </nav>
 
         <!--contenido principal-->
         <main class="main">

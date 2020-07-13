@@ -299,7 +299,13 @@ a{
     margin-bottom: 10px;
 }
 
-.popup form .contenedor-inputs{}
+
+.popup form .pendientes{
+    border:3px solid #096BA7;
+    padding: 10px;
+    width: 100%;
+}
+
 
 .popup form .contenedor-inputs input{
     width: 100%;
@@ -441,3 +447,24 @@ a{
     width: 100%;
     height: 30px;
 }
+/**/
+scroll-container {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+  }
+    scroll-container {
+    display: block;
+    width: 450px;
+    height: 400px;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+  }
+  scroll-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50%;
+    font-size: 16px;
+  }
+  

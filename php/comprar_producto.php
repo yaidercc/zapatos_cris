@@ -7,24 +7,37 @@
         $precio=$_POST['precio'];
         $total=$cantidad*$precio;
     }
-    $factura=rand(123344, 199995);
-    $comprar=rand(123324, 188995);
-    $query="INSERT INTO `encabezado_ventas`(`NRO_FACTURA`, `FECHA_COMPRA`, `ID_USUARIO_FK`) VALUES ($factura,CURRENT_TIMESTAMP,$idusu)";
-    $ran=mysqli_query($conexion,$query);
-
-    $consulta="INSERT INTO `detalle_compras`(`ID_COMPRA`, `CANTIDAD`, `TOTAL`, `TALLAS`, `ID_PRODUCTO_FK`, `NRO_FACTURA_FK`) VALUES ($comprar,$cantidad,$total,'31',$idpro,$factura)";
-    $run=mysqli_query($conexion,$consulta);
-
-    if(!$ran and !$run){
-        echo " <script language='JavaScript'>
-            alert('error');
-            location.replace('http://localhost/Proyecto%20ppi/Aplicativo/comprar.php?no=$ID');
-        </script>";
+    $verificar="SELECT CANTIDAD FROM productos WHERE ID_PRODUCTO=$idpro";
+    $correr=mysqli_query($conexion,$verificar);
+    $cant=mysqli_fetch_array($correr);
+    if($cant['CANTIDAD']>$cantidad){
+        $factura=rand(123344, 199995);
+        $comprar=rand(123324, 188995);
+        $query="INSERT INTO `encabezado_ventas`(`NRO_FACTURA`, `FECHA_COMPRA`, `ID_USUARIO_FK`) VALUES ($factura,CURRENT_TIMESTAMP,$idusu)";
+        $ran=mysqli_query($conexion,$query);
+    
+        $consulta="INSERT INTO `detalle_compras`(`ID_COMPRA`, `CANTIDAD`, `TOTAL`, `TALLAS`, `ID_PRODUCTO_FK`, `NRO_FACTURA_FK`) VALUES ($comprar,$cantidad,$total,'31',$idpro,$factura)";
+        $run=mysqli_query($conexion,$consulta);
+    
+        $decre="UPDATE productos SET CANTIDAD=CANTIDAD-$cantidad WHERE ID_PRODUCTO=$idpro";
+        $dec=mysqli_query($conexion,$decre);
+        if(!$ran and !$run and !$dec){
+            echo " <script language='JavaScript'>
+                alert('error');
+                location.replace('http://localhost/Proyecto%20ppi/Aplicativo/comprar.php?no=$idpro');
+            </script>";
+        }else{
+            echo " <script language='JavaScript'>
+                alert('comprado con exito');
+                location.replace('http://localhost/Proyecto%20ppi/Aplicativo/cliente.php');
+            </script>";
+        }
     }else{
         echo " <script language='JavaScript'>
-            alert('comprado con exito');
-            location.replace('http://localhost/Proyecto%20ppi/Aplicativo/cliente.php');
-        </script>";
+                alert('solo disponemos de '+$cant[CANTIDAD]+' unidades');
+                location.replace('http://localhost/Proyecto%20ppi/Aplicativo/cliente.php');
+            </script>";
     }
+   
 
 ?>

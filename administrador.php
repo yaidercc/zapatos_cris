@@ -61,7 +61,8 @@
         <main class="main">
             <h3 class="titulos">PRODUCTOS</h3>
             <div class="container">
-             
+            
+                
                 <?php
                     include 'php/conexion.php';//incluye la conexion a la base de datos
 			        $query="SELECT * from productos";//trae los datos que coincidan con la busqueda
@@ -69,6 +70,7 @@
                     while ($mostrar=mysqli_fetch_array($result)) {
                         ?>
                         <form action="php/modificar.php" method="POST">  
+                            
                             <div class="producto">
                                 <?php
                                     echo '<img src="'.$mostrar["IMAGEN"].'"><br>';
@@ -87,7 +89,6 @@
 				    ?>
             </div>
         </main>
-        
     </div>
         <!--agregar producto popup-->
         <div id="overlay" class="overlay ">
@@ -115,32 +116,46 @@
                <input type="submit" value="agregar" class="btn-submit">
            </form>
         </div>
-
+                    </div>
         <!---editar producto--> 
         <div id="overlay2" class="overlay">
             <div class="popup" id="popup2">
                 <a href="#" id="btn-cerrar-popup2" class="btn-cerrar-popup"> <i class="fas fa-times"></i></a>
-                <h3>EDITAR PRODUCTO</h3>
-                <form method="POST" action="php/editar_producto.php"> 
-                <div class="contenedor-inputs">	
-                <form>
-                    <select id='producto' name="productos" required>
-                    <option>--seleccione producto--</option>
-                        <?php
-				 	    include 'php/conexion.php';
-				 	    $consulta="SELECT * from productos";
-				 	    $res=mysqli_query($conexion,$consulta);
-				 	    while ($row=mysqli_fetch_array($res)) {
-                            echo '<option value="'.$row['ID_PRODUCTO'].'">'.$row['NOMBRE_PRODUCTO'].'</option>';
-				 	    }
-				        ?>		
-                    </select>
-                    <input type="text" placeholder="nombre del producto"  id="nombre" name="namepro" >
-                    <input type="number" placeholder="cantidad disponibles"  id="cantidad" name="cantidad" >
-                    <input type="number" placeholder="precio unitario" id="precio" name="preciou" >
-                </div>
-               <input type="submit" value="editar" class="btn-submit">
-           </form>
+                <h3>PRODUCTOS VENDIDOS</h3>
+                <scroll-container> 
+                <?php
+                    include 'php/conexion.php';//incluye la conexion a la base de datos
+			        $querys="SELECT * from detalle_compras where pagado=0";//trae los datos que coincidan con la busqueda
+                    $resu=mysqli_query($conexion,$querys);//ejecuta la consulta
+                    while ($mostrar=mysqli_fetch_array($resu)) {
+                        $produc="SELECT prod.NOMBRE_PRODUCTO FROM productos prod INNER JOIN detalle_compras dtl ON prod.ID_PRODUCTO=dtl.ID_PRODUCTO_FK";
+                        $traer=mysqli_query($conexion,$produc);
+                        $vista=mysqli_fetch_array($traer);
+                        $cliente="SELECT cls.PRIMER_NOMBRE, cls.DIRECCION, cls.TELEFONO FROM usuarios cls INNER JOIN encabezado_ventas enca ON cls.ID_USUARIO=enca.ID_USUARIO_FK";
+                        $buscar=mysqli_query($conexion,$cliente);
+                        $view=mysqli_fetch_array($buscar);
+                        ?>
+                            
+                                <form action="php/pagar.php" method="POST">
+                                <scroll-page>
+                                    <div class="pendientes">
+                                        <input type="hidden" name="idsc" value="<?php echo $mostrar['ID_COMPRA'] ?>">
+                                        <p class="desc"><strong>NOMBRE PRODUCTO: </strong> <?php echo $vista['NOMBRE_PRODUCTO']?></p>
+                                        <p class="desc"><strong>NOMBRE COMPRADOR: </strong> <?php echo $view['PRIMER_NOMBRE']?></p>
+                                        <p class="desc"><strong>DIRECCION: </strong> <?php echo $view['DIRECCION']?></p>
+                                        <p class="desc"><strong>TELEFONO: </strong> <?php echo $view['TELEFONO']?></p>
+                                        <p class="desc"><strong>CANTIDAD :</strong> <?php echo $mostrar['CANTIDAD']?></p>
+                                        <p class="desc"><strong>TOTAL :</strong> <?php echo $mostrar['TOTAL']?></p>                               
+                                        <input type="submit" class="btn-submit" value="modificar"> 
+                                    </div>
+                                    </scroll-page>
+
+                                </form>
+                    
+                    <?php
+				    }
+                    ?>
+                    </scroll-container> 
         </div>
     </div>
     <script src='javaScript/main.js'></script> 

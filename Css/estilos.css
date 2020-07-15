@@ -417,7 +417,7 @@ scroll-container {
     scroll-container {
     display: block;
     width: 450px;
-    height: 400px;
+    height: 450px;
     overflow-y: scroll;
     scroll-behavior: smooth;
   }

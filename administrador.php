@@ -15,8 +15,7 @@
     <div class="contenedor activate" id="contenedor"> 
         <header class="header"> 
             <div class="contenedor-logo">
-                <button  id="boton-menu"class="boton-menu"><i class="fas fa-bars"></i></button>
-                <a href="#" class="logo"><h1>Zapatos Cris</h1></a>
+                <a href="#" class="logo"><h1>Calzado Cris</h1></a>
             </div>
             <!--<div class="barra-busqueda">
               <input type="text" placeholder="Buscar">
@@ -112,10 +111,13 @@
 			        $querys="SELECT * from detalle_compras where pagado=0";//trae los datos que coincidan con la busqueda
                     $resu=mysqli_query($conexion,$querys);//ejecuta la consulta
                     while ($mostrar=mysqli_fetch_array($resu)) {
-                        $produc="SELECT prod.NOMBRE_PRODUCTO FROM productos prod INNER JOIN detalle_compras dtl ON prod.ID_PRODUCTO=dtl.ID_PRODUCTO_FK";
+                        $produc="SELECT NOMBRE_PRODUCTO FROM productos WHERE ID_PRODUCTO=$mostrar[ID_PRODUCTO_FK]";
                         $traer=mysqli_query($conexion,$produc);
                         $vista=mysqli_fetch_array($traer);
-                        $cliente="SELECT cls.PRIMER_NOMBRE, cls.DIRECCION, cls.TELEFONO FROM usuarios cls INNER JOIN encabezado_ventas enca ON cls.ID_USUARIO=enca.ID_USUARIO_FK";
+                        $enca="SELECT *  FROM encabezado_ventas WHERE NRO_FACTURA=$mostrar[NRO_FACTURA_FK]";
+                        $encab=mysqli_query($conexion,$enca);
+                        $encabe=mysqli_fetch_array($encab);
+                        $cliente="SELECT *  FROM usuarios WHERE ID_USUARIO=$encabe[ID_USUARIO_FK]";
                         $buscar=mysqli_query($conexion,$cliente);
                         $view=mysqli_fetch_array($buscar);
                         ?>
@@ -124,13 +126,14 @@
                                 <scroll-page>
                                     <div class="pendientes">
                                         <input type="hidden" name="idsc" value="<?php echo $mostrar['ID_COMPRA'] ?>">
-                                        <p class="desc"><strong>NOMBRE PRODUCTO: </strong> <?php echo $vista['NOMBRE_PRODUCTO']?></p>
                                         <p class="desc"><strong>NOMBRE COMPRADOR: </strong> <?php echo $view['PRIMER_NOMBRE']?></p>
+                                        <p class="desc"><strong>NOMBRE PRODUCTO: </strong> <?php echo $vista['NOMBRE_PRODUCTO']?></p>
+                                        <p class="desc"><strong>TALLA: </strong> <?php echo $mostrar['TALLAS']?></p>
                                         <p class="desc"><strong>DIRECCION: </strong> <?php echo $view['DIRECCION']?></p>
                                         <p class="desc"><strong>TELEFONO: </strong> <?php echo $view['TELEFONO']?></p>
                                         <p class="desc"><strong>CANTIDAD :</strong> <?php echo $mostrar['CANTIDAD']?></p>
                                         <p class="desc"><strong>TOTAL :</strong> <?php echo $mostrar['TOTAL']?></p>                               
-                                        <input type="submit" class="btn-submit" value="modificar"> 
+                                        <input type="submit" class="btn-submit" value="entregado"> 
                                     </div>
                                     </scroll-page>
 

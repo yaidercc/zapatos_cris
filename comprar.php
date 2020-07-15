@@ -17,7 +17,7 @@
         <!--cabecera-->
         <header class="header"> 
             <div class="contenedor-logo">
-                <a href="#" class="logo"><h1>Zapatos Cris</h1></a>
+                <a href="#" class="logo"><h1>Calzado Cris</h1></a>
             </div>
             <div class="botones-header">
                 <?php
@@ -25,7 +25,6 @@
                 $curp = $_SESSION['data']['PRIMER_NOMBRE'];
                 ?>
                 <h2><?php echo $curp ?></h2>
-                <button><i class="fas fa-bell"></i></button>
                 <button><a href="php/logout.php"><i title="cerrar sesion"class="fas fa-sign-out-alt"></i></a></button>
             </div>
         </header>
@@ -70,16 +69,14 @@
 
                                         <p class="genero" id="genero: "><strong>genero:</strong> <?php echo $auxx['NOMBRE_GENERO']?></p>
 
-                                        <p class="genero" name="cantidad" id="cantidad"><strong>unidades a comprar: </strong><input name="cantidad" type="text" value="1"></p>
+                                        <p class="genero" name="cantidad" id="cantidad"><strong>unidades a comprar: </strong><input name="cantidad" type="text" value="1" required></p>
 
-                                        <p class="genero" name="cantidad" id="cantidad"><strong>talla: </strong><input name="talla" placeholder="" type="text"></p>
+                                        <p class="genero" name="cantidad" id="cantidad"><strong>talla: </strong><input name="talla" placeholder="ingrese la talla" type="text" required></p>
 
                                         <p class="genero" id="total"><strong>precio unitario: </strong><?php echo $mostrar['PRECIO']?></p>
 
-                                        <p><strong>fecha de compra: </strong><?php echo date("y/m/d"); ?></p>
-
-                                        <p><strong>nombre del titular: </strong><?php echo $_SESSION['data']['PRIMER_NOMBRE']?></p>
-                                        <input type="submit" class="bont" value="comprar">
+                                        <input type="submit" class="bont" value="solicitar">
+                                        <?PHP echo "<a class='btn1' href='cliente.php'><h1>volver</h1></a>";?>
                                     </div>
                                 </div>
                             </form>

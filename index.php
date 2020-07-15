@@ -14,8 +14,7 @@
     <div class="contenedor activate" id="contenedor"> 
         <header class="header"> 
             <div class="contenedor-logo">
-                <button  id="boton-menu"class="boton-menu"><i class="fas fa-bars"></i></button>
-                <a href="#" class="logo"><h1>Zapatos Cris</h1></a>
+                <a href="#" class="logo"><h1>Calzado Cris</h1></a>
             </div>
             <!--<div class="barra-busqueda">
               <input type="text" placeholder="Buscar">
@@ -37,7 +36,7 @@
 
         </nav>
         <main class="main">
-            <h3 class="titulos">PRODUCTOS</h3>
+            <h3 class="titulos">PRODUCTOS (ingresa o registrate para solicitar productos)</h3>
             <div class="container">
             <?php
                 include 'php/conexion.php';//incluye la conexion a la base de datos
@@ -56,8 +55,9 @@
                         </div>
                         <strong><p class="desc"><?php echo $mostrar['NOMBRE_PRODUCTO']?></p></strong>
                         <p class="genero" id="genero: "><?php echo $auxx['NOMBRE_GENERO']?></p>
-                        <p class="genero"><strong>unidades disponibles: </strong><?php echo $mostrar['CANTIDAD']?></p></br>
+                        <p class="genero"><strong>unidades disponibles: </strong><?php echo $mostrar['CANTIDAD']?></p>
                         <p class="genero"><strong>precio: </strong>$<?php echo $mostrar['PRECIO']?></p>
+                        
                     </div>
                     <?php
             }
@@ -71,7 +71,7 @@
                 <h3>INICIAR SESION</h3>
                 <form method="POST" action="php/iniciar.php"> 
                 <div class="contenedor-inputs">
-                   <input type="text" placeholder="id usuario" name="iduser" required>
+                   <input type="text" placeholder="nombre de usuario" name="iduser" required>
                    <input type="password" placeholder="clave" name="clave" required>
                 </div>
                <input type="submit" value="ingresar" class="btn-submit">
@@ -90,9 +90,9 @@
                    <input type="text" placeholder="segundo nombre" name="nombre2" >
                    <input type="text" placeholder="primer apellido" name="apellido1" required>
                    <input type="text" placeholder="segundo apellido" name="apellido2" required>
-                   <input type="text" placeholder="e-mail" name="correo" required>
+                   <input type="email" placeholder="e-mail" name="correo" required>
                    <input type="text" placeholder="direccion de residencia" name="direccion" required>
-                   <input type="text" placeholder="telefono de residencia" name="telefono" required>
+                   <input type="text" placeholder="telefono o celular" name="telefono" required>
                    <select name="genero" class="list" required>
                        <option>--seleccione genero--</option>
                         <?php
@@ -106,7 +106,7 @@
                     </select>
                    <input type="password" placeholder="clave" name="clave" required>
                 </div>
-               <input type="submit" value="ingresar" class="btn-submit">
+               <input type="submit" value="Registrarse" class="btn-submit">
            </form>
         </div>
         

@@ -16,8 +16,7 @@
     <div class="contenedor activate" id="contenedor"> 
         <header class="header"> 
             <div class="contenedor-logo">
-                <button  id="boton-menu"class="boton-menu"><i class="fas fa-bars"></i></button>
-                <a href="#" class="logo"><h1>Zapatos Cris</h1></a>
+                <a href="#" class="logo"><h1>Calzado Cris</h1></a>
             </div>
 
             <!--<div class="barra-busqueda">
@@ -32,7 +31,6 @@
                 $curp = $_SESSION['data']['PRIMER_NOMBRE'];
                 ?>
                 <h2><?php echo $curp ?></h2>
-                <button><i class="fas fa-bell"></i></button>
                 <button><a href="php/logout.php"><i title="cerrar sesion"class="fas fa-sign-out-alt"></i></a></button>
             </div>
         </header>

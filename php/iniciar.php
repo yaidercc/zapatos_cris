@@ -3,7 +3,7 @@
     session_start();
     $iduser = $_POST['iduser'];
     $contra = $_POST['clave'];
-    $consulta="SELECT * FROM usuarios where ID_USUARIO='$iduser' AND CLAVE='$contra'";
+    $consulta="SELECT * FROM usuarios where username='$iduser' AND CLAVE='$contra'";
     $resultado=mysqli_query($conexion,$consulta);
     if(!isset($resultado)){
         echo " <script language='JavaScript'>

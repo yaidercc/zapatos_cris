@@ -104,7 +104,7 @@
         <div id="overlay2" class="overlay">
             <div class="popup" id="popup2">
                 <a href="#" id="btn-cerrar-popup2" class="btn-cerrar-popup"> <i class="fas fa-times"></i></a>
-                <h3>PRODUCTOS VENDIDOS</h3>
+                <h3>PRODUCTOS PENDIENTES</h3>
                 <scroll-container> 
                 <?php
                     include 'php/conexion.php';//incluye la conexion a la base de datos

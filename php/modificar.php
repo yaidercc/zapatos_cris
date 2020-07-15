@@ -10,12 +10,12 @@
     $run=mysqli_query($conexion,$consulta);
     if(!$run){
         echo " <script language='JavaScript'>
-        alert('no se pudo modificar');
+        alert('error al modificar');
         location.replace('http://localhost/Proyecto%20ppi/Aplicativo/administrador.php');
         </script>";
     }else{
         echo " <script language='JavaScript'>
-        alert('se pudo modificar');
+        alert('modificado con exito');
         location.replace('http://localhost/Proyecto%20ppi/Aplicativo/administrador.php');
         </script>";
     }
